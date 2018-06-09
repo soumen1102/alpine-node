@@ -27,7 +27,7 @@ RUN apk add --no-cache curl make gcc g++ python linux-headers binutils-gold gnup
     grep " node-${VERSION}.tar.xz\$" | sha256sum -c | grep ': OK$' && \
   tar -xf node-${VERSION}.tar.xz && \
   cd node-${VERSION} && \
-  ./configure --prefix=/usr ${CONFIG_FLAGS} && \
+  ./configure --with-intl=full-icu --download=all --prefix=/usr ${CONFIG_FLAGS} && \
   make -j$(getconf _NPROCESSORS_ONLN) && \
   make install && \
   cd / && \
